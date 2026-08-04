@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import { services } from '@/data/site';
+import '@/styles/pages/ui-kit.css';
+---
+
+<BaseLayout
+  title="Jhengfong UI Kit"
+  description="The internal visual system for Jhengfong Printing Solutions."
+  locale="en"
+  noindex
+>
+  <main class="kit shell" id="main-content">
+    <header class="kit__hero">
+      <p class="eyebrow">JHENGFONG / EDITORIAL BRUTALISM / V1.0</p>
+      <h1>UI<br />KIT<span aria-hidden="true">.</span></h1>
+      <p>Industrial precision, editorial rhythm and unapologetic structure.</p>
+    </header>
+
+    <section class="kit__section" aria-labelledby="kit-colors">
+      <div class="kit__heading"><span class="eyebrow">01 / COLOR</span><h2 id="kit-colors">Signal, ink & paper</h2></div>
+      <div class="swatch-grid">
+        {[
+          ['PAPER', '#E9E8E2', 'paper'],
+          ['RAISED', '#F6F5EF', 'raised'],
+          ['INK', '#111111', 'ink'],
+          ['ORANGE', '#F15A24', 'orange'],
+          ['SIGNAL', '#00C853', 'signal'],
+          ['FOOTER', '#30302E', 'footer'],
+        ].map(([name, value, slug]) => (
+          <article class={`swatch swatch--${slug}`}>
+            <strong>{name}</strong><span class="eyebrow">{value}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="kit__section" aria-labelledby="kit-type">
+      <div class="kit__heading"><span class="eyebrow">02 / TYPE</span><h2 id="kit-type">Scale & voice</h2></div>
+      <div class="type-specimens">
+        <p class="type-specimens__display">印刷<br />整合</p>
+        <div>
+          <p class="type-specimens__title">Precision at every scale.</p>
+          <p class="type-specimens__body">Body copy remains calm and readable while display typography carries the attitude. Editorial hierarchy comes from contrast, not decoration.</p>
+          <p class="eyebrow">METADATA / 12PX / MONO / UPPERCASE</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="kit__section" aria-labelledby="kit-actions">
+      <div class="kit__heading"><span class="eyebrow">03 / ACTIONS</span><h2 id="kit-actions">Buttons, chips & links</h2></div>
+      <div class="kit__actions">
+        <button class="button button--ink" type="button"><span>Primary action</span><span>↗</span></button>
+        <button class="button button--outline" type="button"><span>Secondary</span><span>→</span></button>
+        <span class="tag tag--signal"><span>↗</span>Active tag</span>
+        <span class="tag">Default tag</span>
+        <a class="text-link" href="#kit-form"><span>Text link</span><span>→</span></a>
+      </div>
+    </section>
+
+    <section class="kit__section" id="kit-form" aria-labelledby="kit-inputs">
+      <div class="kit__heading"><span class="eyebrow">04 / INPUTS</span><h2 id="kit-inputs">Form controls</h2></div>
+      <div class="kit__form">
+        <div class="field"><label for="kit-name">Name / company</label><input id="kit-name" placeholder="Type here" /></div>
+        <div class="field"><label for="kit-service">Service</label><select id="kit-service"><option>Select one</option><option>Labeling machine</option></select></div>
+        <div class="field field--wide"><label for="kit-message">Project notes</label><textarea id="kit-message" rows="4"></textarea></div>
+      </div>
+    </section>
+
+    <section class="kit__section" aria-labelledby="kit-card">
+      <div class="kit__heading"><span class="eyebrow">05 / CARD</span><h2 id="kit-card">Service module</h2></div>
+      <div class="kit__card-example">
+        <ServiceCard item={services[0]} locale="en" linkLabel="View details" index={1} layout="feature" />
+      </div>
+    </section>
+
+    <footer class="kit__footer"><a href="/index.html">← Back to website</a><span class="eyebrow">GRID / 12 COL DESKTOP / 4 COL MOBILE</span></footer>
+  </main>
+</BaseLayout>

@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'Jhengfong Display';
+  src: url('/fonts/CustomFont.ttf') format('truetype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 900;
+}
+
+@layer tokens {
+  :root {
+    color-scheme: light only;
+
+    --color-paper: #e9e8e2;
+    --color-paper-raised: #f6f5ef;
+    --color-ink: #111111;
+    --color-ink-soft: #4c4c48;
+    --color-line: #111111;
+    --color-orange: #f15a24;
+    --color-orange-soft: #ffb18f;
+    --color-signal: #00c853;
+    --color-signal-soft: #a4f6bd;
+    --color-footer: #30302e;
+    --color-footer-text: #18e66c;
+    --color-focus: #254bff;
+    --color-danger: #c92b2b;
+
+    --font-display: 'Jhengfong Display', 'Songti TC', 'Noto Serif TC', Georgia, serif;
+    --font-sans: 'Helvetica Neue', Helvetica, 'PingFang TC', 'Noto Sans TC', Arial, sans-serif;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+
+    --text-xs: clamp(0.69rem, 0.65rem + 0.16vw, 0.78rem);
+    --text-sm: clamp(0.82rem, 0.78rem + 0.18vw, 0.94rem);
+    --text-base: clamp(1rem, 0.94rem + 0.24vw, 1.13rem);
+    --text-md: clamp(1.2rem, 1.08rem + 0.5vw, 1.55rem);
+    --text-lg: clamp(1.55rem, 1.25rem + 1.2vw, 2.35rem);
+    --text-xl: clamp(2rem, 1.4rem + 2.7vw, 4.5rem);
+    --text-2xl: clamp(3rem, 1.55rem + 6.2vw, 9.5rem);
+    --text-display: clamp(3.5rem, 1.2rem + 10.4vw, 14rem);
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4.5rem;
+    --space-9: 7rem;
+    --space-10: 10rem;
+
+    --line-hairline: 1px;
+    --line-strong: 2px;
+    --line-heavy: 4px;
+    --radius-pill: 100vw;
+    --radius-media: 0.25rem;
+    --page-gutter: clamp(0.75rem, 2vw, 2rem);
+    --content-max: 120rem;
+    --header-height: 4.25rem;
+    --footer-bar-height: 3rem;
+    --motion-fast: 160ms;
+    --motion-base: 360ms;
+    --motion-slow: 720ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}

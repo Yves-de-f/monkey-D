@@ -1,0 +1,98 @@
+---
+import type { Locale } from '@/data/site';
+
+interface Props {
+  locale: Locale;
+  fields: {
+    name: string;
+    phone: string;
+    email: string;
+    service: string;
+    message: string;
+    submit: string;
+    select: string;
+  };
+  options: readonly string[];
+  pending: string;
+  success: string;
+  error: string;
+}
+
+const { locale, fields, options, pending, success, error } = Astro.props;
+---
+
+<form
+  class="contact-form"
+  action="/send_email.php"
+  method="post"
+  data-contact-form
+  data-pending={pending}
+  data-success={success}
+  data-error={error}
+>
+  <div class="field field--wide">
+    <label for={`name-${locale}`}>{fields.name}</label>
+    <input id={`name-${locale}`} name="name" autocomplete="name" required />
+  </div>
+  <div class="field">
+    <label for={`phone-${locale}`}>{fields.phone}</label>
+    <input id={`phone-${locale}`} name="phone" type="tel" autocomplete="tel" />
+  </div>
+  <div class="field">
+    <label for={`email-${locale}`}>{fields.email}</label>
+    <input id={`email-${locale}`} name="email" type="email" autocomplete="email" required />
+  </div>
+  <div class="field field--wide">
+    <label for={`type-${locale}`}>{fields.service}</label>
+    <select id={`type-${locale}`} name="type" required>
+      <option value="" disabled selected>{fields.select}</option>
+      {options.map((option, index) => <option value={String(index + 1)}>{option}</option>)}
+    </select>
+  </div>
+  <div class="field field--wide">
+    <label for={`message-${locale}`}>{fields.message}</label>
+    <textarea id={`message-${locale}`} name="message" rows="5" required></textarea>
+  </div>
+  <div class="contact-form__action field--wide">
+    <button class="button button--ink" type="submit">
+      <span>{fields.submit}</span><span aria-hidden="true">↗</span>
+    </button>
+    <p class="contact-form__status" role="status" aria-live="polite" data-form-status></p>
+  </div>
+</form>
+
+<script>
+  const forms = document.querySelectorAll('[data-contact-form]');
+
+  forms.forEach((form) => {
+    if (!(form instanceof HTMLFormElement)) return;
+
+    const status = form.querySelector('[data-form-status]');
+    const submit = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!(status instanceof HTMLElement) || !(submit instanceof HTMLButtonElement)) return;
+
+      submit.disabled = true;
+      status.dataset.state = 'pending';
+      status.textContent = form.dataset.pending ?? '';
+
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) throw new Error(result.message ?? 'Request failed');
+
+        form.reset();
+        status.dataset.state = 'success';
+        status.textContent = form.dataset.success ?? '';
+      } catch {
+        status.dataset.state = 'error';
+        status.textContent = form.dataset.error ?? '';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  });
+</script>

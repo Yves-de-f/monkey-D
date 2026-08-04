@@ -1,0 +1,130 @@
+---
+import type { Locale } from '@/data/site';
+
+interface Props {
+  locale: Locale;
+  openLabel: string;
+  closeLabel: string;
+  title: string;
+  sections: readonly string[];
+  links: readonly (readonly [string, string])[];
+  telLabel: string;
+  timeLabel: string;
+  timeValue: string;
+}
+
+const { locale, openLabel, closeLabel, title, sections, links, telLabel, timeLabel, timeValue } = Astro.props;
+---
+
+<div class="footer-trigger" id="footer-trigger" data-footer-sentinel aria-hidden="true"></div>
+
+<aside class="footer-overlay" data-footer-overlay data-open="false" aria-hidden="true">
+  <div class="footer-overlay__wordmark" aria-hidden="true">{title}</div>
+  <div class="footer-overlay__panel shell">
+    <div class="footer-overlay__panel-meta">
+      <span class="eyebrow">JHENGFONG / CONTACT</span>
+      <span class="eyebrow">{locale === 'zh' ? '新北・台灣' : 'NEW TAIPEI / TAIWAN'}</span>
+    </div>
+    <div class="footer-overlay__columns">
+      <section>
+        <h2 class="eyebrow">{sections[0]}</h2>
+        <ul>
+          {links.slice(0, 3).map(([label, href]) => <li><a href={href}>{label}<span aria-hidden="true">↗</span></a></li>)}
+        </ul>
+      </section>
+      <section>
+        <h2 class="eyebrow">{sections[1]}</h2>
+        <ul>
+          {links.slice(3).map(([label, href]) => <li><a href={href}>{label}<span aria-hidden="true">↗</span></a></li>)}
+        </ul>
+      </section>
+      <section class="footer-overlay__contact">
+        <h2 class="eyebrow">{sections[2]}</h2>
+        <dl>
+          <div><dt>{telLabel}</dt><dd><a href="tel:+886222434702">+886 2 2243 4702</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:info@jhengfong-tw.com">info@jhengfong-tw.com</a></dd></div>
+          <div><dt>{timeLabel}</dt><dd>{timeValue}</dd></div>
+        </dl>
+      </section>
+    </div>
+  </div>
+</aside>
+
+<footer class="footer-bar" data-footer-bar>
+  <div class="footer-bar__inner shell">
+    <small>JHENGFONG_SOLUTIONS</small>
+    <button
+      class="footer-bar__toggle"
+      type="button"
+      aria-expanded="false"
+      data-footer-toggle
+      data-open-label={openLabel}
+      data-close-label={closeLabel}
+    >
+      <span class="footer-bar__dots" aria-hidden="true">●●●</span>
+      <span data-footer-label>{openLabel}</span>
+    </button>
+    <small>© {new Date().getFullYear()}</small>
+  </div>
+</footer>
+
+<script>
+  const overlay = document.querySelector('[data-footer-overlay]');
+  const footerBar = document.querySelector('[data-footer-bar]');
+  const toggle = document.querySelector('[data-footer-toggle]');
+  const label = document.querySelector('[data-footer-label]');
+  const sentinel = document.querySelector('[data-footer-sentinel]');
+
+  let footerOpen = false;
+  let manualClosedAtBottom = false;
+  let wasAtBottom: boolean | null = null;
+
+  const setFooter = (open: boolean, source: 'manual' | 'scroll' = 'manual') => {
+    if (!(overlay instanceof HTMLElement) || !(toggle instanceof HTMLElement) || !(label instanceof HTMLElement)) return;
+
+    footerOpen = open;
+    overlay.dataset.open = String(open);
+    overlay.setAttribute('aria-hidden', String(!open));
+    footerBar?.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    label.textContent = open ? toggle.dataset.closeLabel ?? '' : toggle.dataset.openLabel ?? '';
+
+    if (!open && source === 'manual') manualClosedAtBottom = true;
+  };
+
+  toggle?.addEventListener('click', () => setFooter(!footerOpen));
+
+  overlay?.addEventListener('click', (event) => {
+    if (event.target === overlay) setFooter(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && footerOpen) setFooter(false);
+  });
+
+  if (sentinel && 'IntersectionObserver' in window) {
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isAtBottom = entry.isIntersecting;
+
+        if (wasAtBottom === null) {
+          wasAtBottom = isAtBottom;
+          if (isAtBottom) setFooter(true, 'scroll');
+          return;
+        }
+
+        if (isAtBottom && !wasAtBottom && !manualClosedAtBottom) setFooter(true, 'scroll');
+        if (!isAtBottom && wasAtBottom) {
+          manualClosedAtBottom = false;
+          if (footerOpen) setFooter(false, 'scroll');
+        }
+
+        wasAtBottom = isAtBottom;
+      },
+      { threshold: 0.75 },
+    );
+
+    footerObserver.observe(sentinel);
+  }
+</script>

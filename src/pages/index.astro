@@ -1,0 +1,9 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HomePage from '@/components/HomePage.astro';
+import { copy } from '@/data/site';
+---
+
+<BaseLayout title={copy.zh.metaTitle} description={copy.zh.metaDescription} locale="zh">
+  <HomePage locale="zh" />
+</BaseLayout>
