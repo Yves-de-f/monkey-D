@@ -17,18 +17,41 @@
     gap: var(--space-2);
   }
 
+  .hero__tag {
+    transition:
+      transform var(--motion-fast) var(--ease-out),
+      background var(--motion-fast);
+  }
+
+  .hero__tag:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero__tag-featured {
+    padding-right: var(--space-2);
+    border-right: var(--line-hairline) solid currentColor;
+    font-family: var(--font-mono);
+    font-size: 0.62em;
+    letter-spacing: 0.06em;
+  }
+
   .hero__title {
     display: grid;
     margin-top: var(--space-6);
-    font-size: clamp(3.4rem, 8.8vw, 10.8rem);
-    letter-spacing: -0.075em;
-    line-height: 0.88;
+    font-size: clamp(3rem, 6.35vw, 8rem);
+    font-weight: 800;
+    letter-spacing: -0.065em;
+    line-height: 0.92;
   }
 
   :lang(en) .hero__title {
-    font-size: clamp(3.5rem, 9.7vw, 12rem);
-    letter-spacing: -0.08em;
-    line-height: 0.82;
+    font-size: clamp(2.65rem, 5vw, 6.2rem);
+    letter-spacing: -0.07em;
+    line-height: 0.9;
+  }
+
+  :lang(zh) .hero__title span {
+    white-space: nowrap;
   }
 
   .hero__title span:last-child {
@@ -45,7 +68,7 @@
     max-width: 49rem;
     grid-column: 1 / span 7;
     font-size: var(--text-md);
-    font-weight: 520;
+    font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.35;
   }
@@ -122,8 +145,8 @@
 
   .about__content {
     display: grid;
-    grid-column: 4 / span 6;
-    gap: var(--space-7);
+    grid-column: 4 / span 7;
+    gap: var(--space-6);
   }
 
   .about__content h2 {
@@ -140,7 +163,12 @@
     line-height: 1.1;
   }
 
-  .about__content > p {
+  .about__copy {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .about__copy p {
     color: var(--color-ink-soft);
     line-height: 1.85;
   }
@@ -219,6 +247,10 @@
     gap: var(--space-6);
   }
 
+  .contact__intro > .section-category {
+    margin-top: var(--space-2);
+  }
+
   .contact__intro h2 {
     font-size: var(--text-xl);
     line-height: 0.98;
@@ -291,18 +323,19 @@
 
   .hero__title {
     margin-top: var(--space-7);
-    font-size: clamp(2.2rem, 11vw, 4.5rem);
-    line-height: 0.92;
+    font-size: clamp(1.55rem, 7.5vw, 3.7rem);
+    line-height: 0.96;
   }
 
   :lang(en) .hero__title {
-    font-size: clamp(3rem, 14vw, 5.2rem);
-    line-height: 0.84;
+    font-size: clamp(2rem, 9vw, 3.8rem);
+    line-height: 0.9;
   }
 
   .hero__title span:last-child {
     justify-self: start;
-    font-size: 0.85em;
+    margin-top: var(--space-2);
+    font-size: 0.92em;
   }
 
   :lang(en) .hero__title span:last-child {

@@ -11,7 +11,15 @@ interface Props {
   nav: readonly (readonly [string, string])[];
 }
 
-const { locale, brand, menuLabel, closeLabel, languageLabel, languageHref, nav } = Astro.props;
+const {
+  locale,
+  brand,
+  menuLabel,
+  closeLabel,
+  languageLabel,
+  languageHref,
+  nav,
+} = Astro.props;
 ---
 
 <header class="site-header" data-site-header>
@@ -29,19 +37,34 @@ const { locale, brand, menuLabel, closeLabel, languageLabel, languageHref, nav }
       <span data-nav-label>{menuLabel}</span>
     </button>
 
-    <a class="site-header__brand" href={locale === 'zh' ? '/index.html' : '/index_en.html'}>{brand}</a>
+    <a
+      class="site-header__brand"
+      href={locale === 'zh' ? '/index.html' : '/index_en.html'}
+    >
+      {brand}
+    </a>
 
-    <a class="chip chip--outline site-header__language" href={languageHref} hreflang={locale === 'zh' ? 'en' : 'zh-TW'}>
-      {languageLabel}<span class="chip__dot" aria-hidden="true"></span>
+    <a
+      class="chip chip--outline site-header__language"
+      href={languageHref}
+      hreflang={locale === 'zh' ? 'en' : 'zh-TW'}
+    >
+      {languageLabel}
+      <span class="chip__globe" aria-hidden="true"></span>
     </a>
   </div>
 
-  <nav class="site-header__nav" id="primary-navigation" aria-label={locale === 'zh' ? '主要選單' : 'Primary'} data-nav-panel inert>
-    <ol class="site-header__links shell">
-      {nav.map(([label, href], index) => (
+  <nav
+    class="site-header__nav"
+    id="primary-navigation"
+    aria-label={locale === 'zh' ? '主要選單' : 'Primary'}
+    data-nav-panel
+    inert
+  >
+    <ol class="site-header__links">
+      {nav.map(([label, href]) => (
         <li>
           <a href={href} data-nav-link>
-            <span class="eyebrow">0{index + 1}</span>
             <span>{label}</span>
             <span aria-hidden="true">↗</span>
           </a>
@@ -57,23 +80,57 @@ const { locale, brand, menuLabel, closeLabel, languageLabel, languageHref, nav }
   const label = header?.querySelector('[data-nav-label]');
   const panel = header?.querySelector('[data-nav-panel]');
   const links = header?.querySelectorAll('[data-nav-link]');
+  const hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+  let manualOpen = false;
+  let hoverOpen = false;
 
   const setNavigation = (open: boolean) => {
-    if (!(toggle instanceof HTMLElement) || !(label instanceof HTMLElement) || !(panel instanceof HTMLElement)) return;
+    if (
+      !(toggle instanceof HTMLElement) ||
+      !(label instanceof HTMLElement) ||
+      !(panel instanceof HTMLElement)
+    ) {
+      return;
+    }
 
     header?.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    label.textContent = open ? toggle.dataset.closeLabel ?? '' : toggle.dataset.openLabel ?? '';
+    label.textContent = open
+      ? toggle.dataset.closeLabel ?? ''
+      : toggle.dataset.openLabel ?? '';
     panel.inert = !open;
   };
 
   toggle?.addEventListener('click', () => {
-    setNavigation(toggle.getAttribute('aria-expanded') !== 'true');
+    manualOpen = !manualOpen;
+    setNavigation(manualOpen || hoverOpen);
   });
 
-  links?.forEach((link) => link.addEventListener('click', () => setNavigation(false)));
+  header?.addEventListener('mouseenter', () => {
+    if (!hoverQuery.matches) return;
+    hoverOpen = true;
+    setNavigation(true);
+  });
+
+  header?.addEventListener('mouseleave', () => {
+    if (!hoverQuery.matches) return;
+    hoverOpen = false;
+    setNavigation(manualOpen);
+  });
+
+  links?.forEach((link) =>
+    link.addEventListener('click', () => {
+      manualOpen = false;
+      hoverOpen = false;
+      setNavigation(false);
+    }),
+  );
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setNavigation(false);
+    if (event.key === 'Escape') {
+      manualOpen = false;
+      hoverOpen = false;
+      setNavigation(false);
+    }
   });
 </script>

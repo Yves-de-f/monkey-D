@@ -24,8 +24,11 @@
     --color-focus: #254bff;
     --color-danger: #c92b2b;
 
-    --font-display: 'Jhengfong Display', 'Songti TC', 'Noto Serif TC', Georgia, serif;
-    --font-sans: 'Helvetica Neue', Helvetica, 'PingFang TC', 'Noto Sans TC', Arial, sans-serif;
+    --font-display:
+      'Jhengfong Display', 'Songti TC', 'Noto Serif TC', Georgia, serif;
+    --font-sans:
+      'Helvetica Neue', Helvetica, 'PingFang TC', 'Noto Sans TC', Arial,
+      sans-serif;
     --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 
     --text-xs: clamp(0.69rem, 0.65rem + 0.16vw, 0.78rem);

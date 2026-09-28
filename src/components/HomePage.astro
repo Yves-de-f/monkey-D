@@ -32,12 +32,34 @@ const solutions = services.filter((item) => item.category === 'solution');
   <section class="hero shell" aria-labelledby="hero-title">
     <div class="hero__topline">
       <p class="eyebrow">{text.heroKicker}</p>
-      <p class="eyebrow">NO. 032 / IN PRODUCTION</p>
+      <p class="eyebrow">IN PRODUCTION</p>
     </div>
 
-    <div class="hero__tags" aria-label={locale === 'zh' ? '服務類型' : 'Service categories'}>
-      {text.tags.map((tag, index) => (
-        <span class:list={['tag', index === 0 && 'tag--signal']}>{index === 0 && <span aria-hidden="true">↗</span>}{tag}</span>
+    <div
+      class="hero__tags"
+      aria-label={locale === 'zh' ? '服務類型' : 'Service categories'}
+    >
+      {text.tags.map((tag) => (
+        <a
+          class:list={[
+            'tag',
+            'hero__tag',
+            tag.featured && 'tag--featured',
+            tag.tone === 'signal' && 'tag--signal',
+            tag.tone === 'orange' && 'tag--orange',
+          ]}
+          href={tag.href}
+        >
+          {
+            tag.featured && (
+              <span class="hero__tag-featured">
+                {locale === 'zh' ? '主打' : 'FEATURED'}
+              </span>
+            )
+          }
+          <span>{tag.label}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       ))}
     </div>
 
@@ -49,13 +71,27 @@ const solutions = services.filter((item) => item.category === 'solution');
     <div class="hero__lower grid-12">
       <p class="hero__deck">{text.heroDeck}</p>
       <div class="hero__actions">
-        <a class="button button--ink" href="#services"><span>{text.heroPrimary}</span><span aria-hidden="true">↓</span></a>
-        <a class="button button--outline" href="#contact"><span>{text.heroSecondary}</span><span aria-hidden="true">↗</span></a>
+        <a class="button button--ink" href="#services">
+          <span>{text.heroPrimary}</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="button button--outline" href="#contact">
+          <span>{text.heroSecondary}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
 
     <figure class="hero__media">
-      <img src="/images/B.jpg" alt={locale === 'zh' ? '印刷機高速運轉中的滾筒與紙張' : 'Paper moving through the rollers of an industrial printing press'} fetchpriority="high" />
+      <img
+        src="/images/B.jpg"
+        alt={
+          locale === 'zh'
+            ? '印刷機高速運轉中的滾筒與紙張'
+            : 'Paper moving through the rollers of an industrial printing press'
+        }
+        fetchpriority="high"
+      />
       <figcaption>
         {text.heroCaption.map((line) => <span class="eyebrow">{line}</span>)}
       </figcaption>
@@ -66,30 +102,63 @@ const solutions = services.filter((item) => item.category === 'solution');
   <section class="about shell" id="about" aria-labelledby="about-title">
     <div class="about__label eyebrow">{text.aboutEyebrow}</div>
     <div class="about__content">
+      <p class="section-category">{text.aboutCategory}</p>
       <h2 id="about-title">{text.aboutTitle}</h2>
       <blockquote>{text.aboutLead}</blockquote>
-      <p>{text.aboutBody}</p>
+      <div class="about__copy">
+        {text.aboutBody.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
     </div>
     <div class="about__stats">
-      <div><strong>{text.statYears}</strong><span>{text.statYearsLabel}</span></div>
-      <div><strong>{text.statScope}</strong><span>{text.statScopeLabel}</span></div>
+      <div>
+        <strong>{text.statYears}</strong>
+        <span>{text.statYearsLabel}</span>
+      </div>
+      <div>
+        <strong>{text.statScope}</strong>
+        <span>{text.statScopeLabel}</span>
+      </div>
     </div>
   </section>
 
   <section class="service-section" id="services" aria-labelledby="machines-title">
-    <SectionHeading id="machines-title" eyebrow={text.machineEyebrow} title={text.machineTitle} deck={text.machineDeck} />
+    <SectionHeading
+      id="machines-title"
+      eyebrow={text.machineEyebrow}
+      category={text.machineCategory}
+      title={text.machineTitle}
+      deck={text.machineDeck}
+    />
     <div class="machine-grid shell">
       {machines.map((item, index) => (
-        <ServiceCard item={item} locale={locale} linkLabel={text.readMore} index={index + 1} layout={index === 0 ? 'feature' : 'standard'} />
+        <ServiceCard
+          item={item}
+          locale={locale}
+          linkLabel={text.readMore}
+          index={index + 1}
+          layout={index === 0 ? 'feature' : 'standard'}
+        />
       ))}
     </div>
   </section>
 
   <section class="service-section service-section--solutions" aria-labelledby="solutions-title">
-    <SectionHeading id="solutions-title" eyebrow={text.solutionEyebrow} title={text.solutionTitle} deck={text.solutionDeck} />
+    <SectionHeading
+      id="solutions-title"
+      eyebrow={text.solutionEyebrow}
+      category={text.solutionCategory}
+      title={text.solutionTitle}
+      deck={text.solutionDeck}
+    />
     <div class="solution-grid shell">
       {solutions.map((item, index) => (
-        <ServiceCard item={item} locale={locale} linkLabel={text.readMore} index={machines.length + index + 1} layout={index === 0 ? 'feature' : 'standard'} />
+        <ServiceCard
+          item={item}
+          locale={locale}
+          linkLabel={text.readMore}
+          index={machines.length + index + 1}
+          layout={index === 0 ? 'feature' : 'standard'}
+        />
       ))}
     </div>
   </section>
@@ -97,11 +166,12 @@ const solutions = services.filter((item) => item.category === 'solution');
   <section class="contact shell grid-12" id="contact" aria-labelledby="contact-title">
     <div class="contact__intro" data-reveal>
       <p class="eyebrow">{text.contactEyebrow}</p>
+      <p class="section-category">{text.contactCategory}</p>
       <h2 id="contact-title">{text.contactTitle}</h2>
       <p>{text.contactDeck}</p>
       <div class="contact__direct">
         <a href="mailto:info@jhengfong-tw.com">info@jhengfong-tw.com</a>
-        <a href="tel:+886222434702">+886 2 2243 4702</a>
+        <a href="tel:+886222434702">02-2243-4702</a>
       </div>
     </div>
     <div class="contact__form" data-reveal>

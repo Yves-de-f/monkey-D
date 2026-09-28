@@ -13,10 +13,13 @@ export type ServiceItem = {
 export const services: ServiceItem[] = [
   {
     code: 'LD—3000',
-    title: { zh: '自動雙面貼標機', en: 'Automatic double-sided labeler' },
+    title: {
+      zh: '自動雙面貼標機',
+      en: 'Automatic Double-Sided Labeling Machine',
+    },
     description: {
-      zh: '一機雙用，在同一製程完成容器兩側貼標，適合需要穩定節拍與精準定位的產線。',
-      en: 'A two-in-one system that labels both sides of a container in one pass, built for stable throughput and precise placement.',
+      zh: '自動雙面貼標機LD3000是款可一機雙用，以在同一時間在產品或容器的兩側貼標..',
+      en: 'The LD3000 automatic double-sided labeling machine is a dual-purpose machine that simultaneously applies labels to both sides of a product or container. It can apply..',
     },
     image: '/images/items/LD3000.png',
     href: {
@@ -28,10 +31,13 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'LR—4000',
-    title: { zh: '自動圓瓶貼標機', en: 'Automatic round-bottle labeler' },
+    title: {
+      zh: '自動圓瓶貼標機',
+      en: 'Automatic Round Bottle Labeling Machine',
+    },
     description: {
-      zh: '步進馬達搭配微電腦控制，快速處理各式圓瓶與圓柱容器。',
-      en: 'Stepper-motor drive and microcomputer control for fast, consistent labeling across round containers.',
+      zh: '自動圓瓶貼標機以步進馬達驅動搭載微電腦動控制系統可快速貼各種圓型瓶罐..',
+      en: 'Powered by a stepper motor and equipped with a microcomputer-controlled system, this automatic round bottle labeling machine can quickly label a variety of round..',
     },
     image: '/images/items/LR4000.png',
     href: {
@@ -42,10 +48,13 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'LT—3000',
-    title: { zh: '自動上貼貼標機', en: 'Automatic top labeler' },
+    title: {
+      zh: '自動貼標機（上貼）',
+      en: 'Automatic Flat-type Labeling Machine',
+    },
     description: {
-      zh: '靈活應用於袋、盒、瓶罐與容器，快速整合既有包裝產線。',
-      en: 'A flexible top-labeling system for bags, boxes, bottles and containers, ready to integrate into existing lines.',
+      zh: '自動貼標機LT3000是一款可用在各領域產業的袋子、盒子、瓶罐、容器等產品..',
+      en: 'The LT3000 automatic labeler can be utilized in various industries for labeling bags, boxes, bottles, cans, and containers. It applies sticker labels to flat surfaces, tops, or..',
     },
     image: '/images/items/LT3000.png',
     href: {
@@ -56,10 +65,13 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'LR—1100',
-    title: { zh: '桌上型圓瓶貼標機', en: 'Desktop round-bottle labeler' },
+    title: {
+      zh: '半自動圓瓶貼標機／桌上型立式圓貼機',
+      en: 'Tabletop Round Bottle Labeling Machine',
+    },
     description: {
-      zh: '為小量、多品項與有限工作空間打造的半自動直立圓貼方案。',
-      en: 'A semi-automatic vertical labeling solution for small batches, multiple SKUs and compact workspaces.',
+      zh: '桌上型圓瓶貼標機是一台靈活多功能的機種，可應用於各式直立圓瓶、罐裝與圓柱狀產品..',
+      en: 'This tabletop round bottle labeling machine is a flexible and versatile machine suitable for a variety of upright round bottles, cans, and cylindrical products. It offers..',
     },
     image: '/images/items/LR1100.png',
     href: {
@@ -70,10 +82,13 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'FC—1050',
-    title: { zh: '桌上型充填封蓋貼標產線', en: 'Desktop fill-cap-label line' },
+    title: {
+      zh: '桌上型全自動充填封蓋貼標產線',
+      en: 'Tabletop Fully Automatic Filling, Capping, and Labeling Production Line',
+    },
     description: {
-      zh: '把充填、封蓋與貼標整合在緊湊機身中，適合開發、實驗室與中小產能。',
-      en: 'Filling, capping and labeling in one compact line for development, laboratories and small-to-medium production.',
+      zh: '專為中小產能與有限生產空間而設計，例如高端醫藥製劑、實驗室環境、新品開發或中型規模產線，都能靈活應用。..',
+      en: 'This machine boasts a compact tabletop design that occupies minimal space, yet offers the efficiency and precision of an automated vertical round bottle labeler..',
     },
     image: '/images/items/FC1050.png',
     href: {
@@ -84,10 +99,10 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'PR—01',
-    title: { zh: '商用標籤印刷', en: 'Commercial label printing' },
+    title: { zh: '商用貼紙', en: 'Commercial Labels' },
     description: {
-      zh: '依產品特性、材質與使用環境，打造兼顧品牌表現與量產穩定性的標籤。',
-      en: 'Labels tailored to product, stock and environment—balancing brand expression with production consistency.',
+      zh: '正峰憑藉超過30年的專業印刷經驗，為各行各業提供高品質的商用標籤印刷服務。我們擁有先進的印刷設備與多樣化的材質選擇，無論是食品飲料、醫藥保健、日化用品或電子產業，都能依據您的產品特性與使用環境，量身打造最適合的標籤方案。',
+      en: "With over 30 years of professional printing experience, Jhengfong provides high-quality commercial label printing services for a wide range of industries. We boast advanced printing equipment and a diverse selection of materials. Whether you're targeting food and beverage, healthcare, daily chemicals, or electronics, we can tailor labeling solutions to your product characteristics and usage environments..",
     },
     image: '/images/P1/P1-other-4.png',
     href: {
@@ -99,10 +114,10 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'HF—02',
-    title: { zh: '手工代貼', en: 'Hand-applied labeling' },
+    title: { zh: '手工代貼', en: 'Hand-Labeling Service' },
     description: {
-      zh: '適合數量固定、品項複雜，尚不需導入自動化設備的彈性加工服務。',
-      en: 'Flexible finishing for fixed quantities and complex SKUs that do not yet require automated equipment.',
+      zh: '在某些情況下，產品數量固定，但規模尚未大到需要使用貼標機，這時候最適合的就是手工代貼..',
+      en: "In some cases, when the product quantity is fixed but the scale isn't large enough to require a labeling machine, hand-labeling is the most suitable option..",
     },
     image: '/images/P1/P1-other-1.png',
     href: {
@@ -113,10 +128,13 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'CR—100K',
-    title: { zh: '無塵室印刷與檢驗', en: 'Cleanroom printing & inspection' },
+    title: {
+      zh: '無塵室印刷／代工檢驗',
+      en: 'Cleanroom Printing & OEM Service',
+    },
     description: {
-      zh: 'Class 100,000 無塵環境與品質流程，支援對潔淨度敏感的組裝、印刷與檢驗。',
-      en: 'Class 100,000 cleanroom workflows for assembly, printing and inspection with demanding cleanliness requirements.',
+      zh: '正峰擁有 Class 100,000 等級無塵室，並通過 ISO 9001 品質管理認證，能提供專業的無塵室組裝與加工代工服務..',
+      en: 'Jhengfong operates a Class 100,000 cleanroom and is ISO 9001 certified. We provide professional cleanroom printing, inspection, assembly, and other OEM services..',
     },
     image: '/images/P1/P1-other-2.png',
     href: {
@@ -127,10 +145,10 @@ export const services: ServiceItem[] = [
   },
   {
     code: 'BC—04',
-    title: { zh: '條碼列印整合', en: 'Barcode printing integration' },
+    title: { zh: '標籤條碼機', en: 'Barcode Printer' },
     description: {
-      zh: '整合標籤列印、倉儲、零售與出貨流程，讓資訊追溯更即時精準。',
-      en: 'Integrated label printing for warehousing, retail and dispatch—making traceability immediate and accurate.',
+      zh: '我們提供高效能條碼機解決方案，適用於產品標籤、倉儲物流、零售與出貨管理..',
+      en: 'We offer high-performance barcode printer solutions for product labeling, warehousing and logistics, retail, and shipping management. Our diverse models..',
     },
     image: '/images/P1/P1-other-3.png',
     href: {
@@ -144,7 +162,8 @@ export const services: ServiceItem[] = [
 export const copy = {
   zh: {
     metaTitle: '正峰印刷整合服務｜貼標設備、商用標籤與印刷整合',
-    metaDescription: '正峰以超過三十年的印刷經驗，提供自動貼標機租售、商用標籤、無塵室印刷、條碼機與整合服務。',
+    metaDescription:
+      '正峰以超過三十年的印刷經驗，提供自動貼標機租售、商用標籤、無塵室印刷、條碼機與整合服務。',
     brand: '正峰服務',
     menu: '選單',
     close: '收合',
@@ -157,30 +176,66 @@ export const copy = {
       ['聯絡資訊', '#footer-trigger'],
     ],
     heroKicker: 'PRINT × LABEL × AUTOMATION',
-    heroTitle: ['讓標籤精準落位，', '讓品牌清楚被看見。'],
-    heroDeck: '從一張標籤到一條產線，正峰把印刷經驗、貼標設備與技術支援整合成真正能運作的解決方案。',
+    heroTitle: ['正峰專業自動貼標機租賃', '印刷整合服務'],
+    heroDeck:
+      '從一張標籤到一條產線，正峰把印刷經驗、貼標設備與技術支援整合成真正能運作的解決方案。',
     heroPrimary: '瀏覽服務',
     heroSecondary: '提出需求',
-    heroCaption: ['SINCE 1992', 'NEW TAIPEI, TAIWAN', 'INTEGRATED PRINTING'],
-    tags: ['自動貼標機', '商用標籤', '條碼整合', '無塵室'],
-    aboutEyebrow: 'ABOUT / 01',
+    heroCaption: ['INTEGRATED PRINTING'],
+    tags: [
+      {
+        label: '自動貼標機',
+        href: '/service.html?serviceId=auto-machine',
+        featured: true,
+        tone: 'signal',
+      },
+      {
+        label: '商用標籤',
+        href: '/service.html?serviceId=sticker-printing',
+        featured: true,
+        tone: 'orange',
+      },
+      {
+        label: '條碼整合',
+        href: '/service.html?serviceId=barcode-machine',
+        featured: false,
+        tone: 'neutral',
+      },
+      {
+        label: '無塵室',
+        href: '/service.html?serviceId=cleanroom',
+        featured: false,
+        tone: 'neutral',
+      },
+    ],
+    aboutEyebrow: '02 / ABOUT',
+    aboutCategory: '正峰服務',
     aboutTitle: '三十年印刷經驗，現在為整條工作流程服務。',
     aboutLead: '一張標籤不只是產品的外衣，也是品牌、資訊與生產效率交會的地方。',
-    aboutBody: '正峰從印刷現場出發，理解材質、油墨、環境與設備如何共同影響最後成果。我們不只交付印刷品，也協助客戶選擇貼標設備、串接條碼應用，並以無塵室製程支援高潔淨需求。每個方案都以穩定量產、清楚溝通與長期維護為前提。',
+    aboutBody: [
+      '“ 正峰以超過三十年的專業印刷經驗，秉持對品質的堅持與對細節的熱忱，陪伴無數品牌一同成長。我們深信，一張標籤不只是產品的外衣，更是品牌精神的展現。因此，正峰致力於提供穩定、高效的自動貼標整合服務，並以專業印刷技術打造多樣化、高品質的標籤，讓每一件產品在市場上都能綻放最亮眼的形象。',
+      '我們以嚴謹的態度守護每一道流程，並透過無塵室生產環境，滿足高潔淨度的製造需求。我們同時結合條碼機整合應用，協助企業提升管理與追溯的效率，讓每一個細節都更精準。正峰相信，印刷不僅是技術，更是一種讓品牌被看見的力量。 ”',
+    ],
     statYears: '30+',
     statYearsLabel: '年產業經驗',
     statScope: '04',
     statScopeLabel: '大整合服務',
-    machineEyebrow: 'MACHINES / 02',
+    machineEyebrow: '03 / MACHINES',
+    machineCategory: '自動貼標機租賃與買賣',
     machineTitle: '貼標設備不是單一機器，而是產線節拍的一部分。',
-    machineDeck: '從桌上型到全自動產線，依產品形狀、速度、場地與擴充需求選擇合適設備。',
-    solutionEyebrow: 'SOLUTIONS / 03',
+    machineDeck:
+      '無需購置昂貴設備，即可輕鬆享有穩定、高效的自動化貼標效能。歡迎與我們聯繫，讓自動化為您的產線注入新動能。',
+    solutionEyebrow: '04 / SOLUTIONS',
+    solutionCategory: '印刷整合方案',
     solutionTitle: '把印刷、加工與資料管理接成一條線。',
-    solutionDeck: '印刷只是起點；真正的整合，是讓標籤從設計、生產、貼附到追溯都維持一致。',
+    solutionDeck:
+      '從商用印刷貼紙服務到無塵室印刷/檢驗，再到條碼機整合，正峰以多元服務一次滿足，幫助企業輕鬆完成標籤管理的一站式方案。',
     readMore: '查看規格',
-    contactEyebrow: 'PROJECT INQUIRY / 04',
+    contactEyebrow: '05 / PROJECT INQUIRY',
+    contactCategory: '詢問表單.',
     contactTitle: '帶著產品、產量或一個尚未成形的問題來找我們。',
-    contactDeck: '留下基本資訊，我們會依你的產品與工作流程，整理下一步需要確認的條件。',
+    contactDeck:
+      '請留下您的需求與聯絡方式，我們將在最短時間內回覆，並為您提供最合適的解決方案。',
     fields: {
       name: '姓名／公司',
       phone: '電話',
@@ -199,16 +254,22 @@ export const copy = {
     footerTitle: '正峰印刷整合服務',
     footerSections: ['網站', '服務', '聯絡'],
     footerLinks: [
-      ['關於正峰', '#about'], ['設備與服務', '#services'], ['詢問專案', '#contact'],
-      ['自動貼標機', '/service.html?serviceId=auto-machine'], ['商用標籤', '/service.html?serviceId=sticker-printing'], ['耗材', '/consumables.html'],
+      ['關於正峰', '#about'],
+      ['設備與服務', '#services'],
+      ['詢問專案', '#contact'],
+      ['自動貼標機', '/service.html?serviceId=auto-machine'],
+      ['商用標籤', '/service.html?serviceId=sticker-printing'],
+      ['耗材', '/consumables.html'],
     ],
     telLabel: '電話',
     timeLabel: '服務時間',
     timeValue: '週一至週五 08:00—17:30',
   },
   en: {
-    metaTitle: 'Jhengfong Printing Solutions | Labeling, Printing & Integration',
-    metaDescription: 'Thirty years of printing expertise across labeling equipment, commercial labels, cleanroom printing, barcode systems and integrated support.',
+    metaTitle:
+      'Jhengfong Printing Solutions | Labeling, Printing & Integration',
+    metaDescription:
+      'Thirty years of printing expertise across labeling equipment, commercial labels, cleanroom printing, barcode systems and integrated support.',
     brand: 'JHENGFONG',
     menu: 'Menu',
     close: 'Close',
@@ -221,30 +282,73 @@ export const copy = {
       ['Contact', '#footer-trigger'],
     ],
     heroKicker: 'PRINT × LABEL × AUTOMATION',
-    heroTitle: ['Labels placed precisely.', 'Brands seen clearly.'],
-    heroDeck: 'From a single label to an entire line, Jhengfong combines print expertise, labeling equipment and technical support into solutions that work.',
+    heroTitle: [
+      'Jhengfong Professional Automatic Labeling Machine Rental',
+      'Printing Integration Services',
+    ],
+    heroDeck:
+      'From a single label to an entire line, Jhengfong combines print expertise, labeling equipment and technical support into solutions that work.',
     heroPrimary: 'Explore services',
     heroSecondary: 'Start a project',
-    heroCaption: ['SINCE 1992', 'NEW TAIPEI, TAIWAN', 'INTEGRATED PRINTING'],
-    tags: ['Labeling machines', 'Commercial labels', 'Barcode systems', 'Cleanroom'],
-    aboutEyebrow: 'ABOUT / 01',
-    aboutTitle: 'Thirty years in print, now working across the entire production flow.',
-    aboutLead: 'A label is where brand, information and production efficiency meet.',
-    aboutBody: 'Jhengfong started on the print floor, where stock, ink, environment and equipment all shape the final result. Today we deliver more than print: we help clients select labeling equipment, connect barcode workflows and meet high-cleanliness requirements through cleanroom production. Every solution is built for stable output, clear communication and long-term support.',
+    heroCaption: ['INTEGRATED PRINTING'],
+    tags: [
+      {
+        label: 'Labeling machines',
+        href: '/service_en.html?serviceId=auto-machine',
+        featured: true,
+        tone: 'signal',
+      },
+      {
+        label: 'Commercial labels',
+        href: '/service_en.html?serviceId=sticker-printing',
+        featured: true,
+        tone: 'orange',
+      },
+      {
+        label: 'Barcode systems',
+        href: '/service_en.html?serviceId=barcode-machine',
+        featured: false,
+        tone: 'neutral',
+      },
+      {
+        label: 'Cleanroom',
+        href: '/service_en.html?serviceId=cleanroom',
+        featured: false,
+        tone: 'neutral',
+      },
+    ],
+    aboutEyebrow: '02 / ABOUT',
+    aboutCategory: 'Jhengfong SOLUTION',
+    aboutTitle:
+      'Thirty years in print, now working across the entire production flow.',
+    aboutLead:
+      'A label is where brand, information and production efficiency meet.',
+    aboutBody: [
+      '“ With over 30 years of experience in the printing industry, Jhengfong SOLUTION has grown alongside countless brands, driven by a passion for quality and attention to detail. We believe that every label is more than just packaging — it’s a reflection of a brand’s story and identity. That’s why we are dedicated to providing reliable and efficient automatic labeling solutions, along with professional custom printing services that help every product shine in the market.',
+      'Jhengfong upholds the highest standards throughout every step of the process. Our cleanroom facilities ensure high-purity manufacturing, while our barcode system integration enhances efficiency and traceability for our clients. At Jhengfong, we believe printing is not only about precision — it’s about giving brands the power to be seen. ”',
+    ],
     statYears: '30+',
     statYearsLabel: 'years of experience',
     statScope: '04',
     statScopeLabel: 'integrated disciplines',
-    machineEyebrow: 'MACHINES / 02',
-    machineTitle: 'A labeler is not an isolated machine. It is part of your production rhythm.',
-    machineDeck: 'From desktop units to automatic lines, equipment is selected around product form, speed, footprint and room to scale.',
-    solutionEyebrow: 'SOLUTIONS / 03',
+    machineEyebrow: '03 / MACHINES',
+    machineCategory: 'Automatic Labeling Machine Rental and Sales',
+    machineTitle:
+      'A labeler is not an isolated machine. It is part of your production rhythm.',
+    machineDeck:
+      'Enjoy stable and efficient automated labeling performance without the need to purchase expensive equipment. Contact us and let automation bring new momentum to your production line.',
+    solutionEyebrow: '04 / SOLUTIONS',
+    solutionCategory: 'Printing Integration Solutions',
     solutionTitle: 'Printing, finishing and data—connected as one workflow.',
-    solutionDeck: 'Print is the beginning. Integration keeps the label consistent from design and production to application and traceability.',
+    solutionDeck:
+      'From commercial label printing services to cleanroom printing & OEM services, and even barcode printer integration, Jhengfong offers a comprehensive suite of services, providing businesses with a one-stop solution for label management.',
     readMore: 'View details',
-    contactEyebrow: 'PROJECT INQUIRY / 04',
-    contactTitle: 'Bring us a product, a volume target, or a problem that is not fully defined yet.',
-    contactDeck: 'Share the essentials and we will identify the production conditions worth confirming next.',
+    contactEyebrow: '05 / PROJECT INQUIRY',
+    contactCategory: 'form.',
+    contactTitle:
+      'Bring us a product, a volume target, or a problem that is not fully defined yet.',
+    contactDeck:
+      'Please leave your needs and contact information, we will respond as soon as possible and provide you with the most suitable solution.',
     fields: {
       name: 'Name / company',
       phone: 'Phone',
@@ -254,17 +358,28 @@ export const copy = {
       submit: 'Send inquiry',
       select: 'Select one',
     },
-    options: ['Automatic labeling machine', 'Commercial labels', 'Cleanroom', 'Barcode printer', 'Other'],
+    options: [
+      'Automatic labeling machine',
+      'Commercial labels',
+      'Cleanroom',
+      'Barcode printer',
+      'Other',
+    ],
     formPending: 'Sending…',
     formSuccess: 'Thanks—your inquiry has been received.',
-    formError: 'Unable to send right now. Please try again or email us directly.',
+    formError:
+      'Unable to send right now. Please try again or email us directly.',
     footerOpen: 'Contact',
     footerClose: 'Close',
     footerTitle: 'Jhengfong Printing Solutions',
     footerSections: ['Index', 'Services', 'Contact'],
     footerLinks: [
-      ['About', '#about'], ['Machines & services', '#services'], ['Start a project', '#contact'],
-      ['Labeling machines', '/service_en.html?serviceId=auto-machine'], ['Commercial labels', '/service_en.html?serviceId=sticker-printing'], ['Consumables', '/consumables_en.html'],
+      ['About', '#about'],
+      ['Machines & services', '#services'],
+      ['Start a project', '#contact'],
+      ['Labeling machines', '/service_en.html?serviceId=auto-machine'],
+      ['Commercial labels', '/service_en.html?serviceId=sticker-printing'],
+      ['Consumables', '/consumables_en.html'],
     ],
     telLabel: 'Telephone',
     timeLabel: 'Studio hours',

@@ -13,37 +13,114 @@ interface Props {
   timeValue: string;
 }
 
-const { locale, openLabel, closeLabel, title, sections, links, telLabel, timeLabel, timeValue } = Astro.props;
+const {
+  locale,
+  openLabel,
+  closeLabel,
+  title,
+  sections,
+  links,
+  telLabel,
+  timeLabel,
+  timeValue,
+} = Astro.props;
+
+const wordmarkCopies = [
+  'trail-farthest',
+  'trail-far',
+  'trail-mid',
+  'trail-near',
+  'main',
+] as const;
+const narrowWordmarkLines = locale === 'zh' ? ['正峰印刷', '整合服務'] : [];
 ---
 
-<div class="footer-trigger" id="footer-trigger" data-footer-sentinel aria-hidden="true"></div>
+<div
+  class="footer-trigger"
+  id="footer-trigger"
+  data-footer-sentinel
+  aria-hidden="true"
+>
+</div>
 
 <aside class="footer-overlay" data-footer-overlay data-open="false" aria-hidden="true">
-  <div class="footer-overlay__wordmark" aria-hidden="true">{title}</div>
-  <div class="footer-overlay__panel shell">
-    <div class="footer-overlay__panel-meta">
-      <span class="eyebrow">JHENGFONG / CONTACT</span>
-      <span class="eyebrow">{locale === 'zh' ? '新北・台灣' : 'NEW TAIPEI / TAIWAN'}</span>
-    </div>
+  <div
+    class="footer-overlay__wordmark"
+    aria-hidden="true"
+  >
+    {
+      wordmarkCopies.map((copy) => (
+        <span
+          class={`footer-overlay__wordmark-copy footer-overlay__wordmark-copy--${copy} footer-overlay__wordmark-copy--${locale}`}
+        >
+          <span class="footer-overlay__wordmark-wide">{title}</span>
+          {
+            locale === 'zh' && (
+              <span class="footer-overlay__wordmark-narrow">
+                {narrowWordmarkLines.map((line) => <span>{line}</span>)}
+              </span>
+            )
+          }
+        </span>
+      ))
+    }
+  </div>
+  <div
+    class="footer-overlay__panel shell"
+    aria-label={locale === 'zh' ? '頁尾資訊' : 'Footer information'}
+  >
     <div class="footer-overlay__columns">
       <section>
         <h2 class="eyebrow">{sections[0]}</h2>
         <ul>
-          {links.slice(0, 3).map(([label, href]) => <li><a href={href}>{label}<span aria-hidden="true">↗</span></a></li>)}
+          {
+            links.slice(0, 3).map(([label, href]) => (
+              <li>
+                <a href={href}>
+                  {label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </section>
       <section>
         <h2 class="eyebrow">{sections[1]}</h2>
         <ul>
-          {links.slice(3).map(([label, href]) => <li><a href={href}>{label}<span aria-hidden="true">↗</span></a></li>)}
+          {
+            links.slice(3).map(([label, href]) => (
+              <li>
+                <a href={href}>
+                  {label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </section>
       <section class="footer-overlay__contact">
         <h2 class="eyebrow">{sections[2]}</h2>
         <dl>
-          <div><dt>{telLabel}</dt><dd><a href="tel:+886222434702">+886 2 2243 4702</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:info@jhengfong-tw.com">info@jhengfong-tw.com</a></dd></div>
-          <div><dt>{timeLabel}</dt><dd>{timeValue}</dd></div>
+          <div>
+            <dt>{telLabel}</dt>
+            <dd>
+              <a href="tel:+886222434702">+886 2 2243 4702</a>
+            </dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              <a href="mailto:info@jhengfong-tw.com">
+                info@jhengfong-tw.com
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>{timeLabel}</dt>
+            <dd>{timeValue}</dd>
+          </div>
         </dl>
       </section>
     </div>
@@ -52,7 +129,7 @@ const { locale, openLabel, closeLabel, title, sections, links, telLabel, timeLab
 
 <footer class="footer-bar" data-footer-bar>
   <div class="footer-bar__inner shell">
-    <small>JHENGFONG_SOLUTIONS</small>
+    <small>Jhengfong_SOLUTION</small>
     <button
       class="footer-bar__toggle"
       type="button"
@@ -61,10 +138,10 @@ const { locale, openLabel, closeLabel, title, sections, links, telLabel, timeLab
       data-open-label={openLabel}
       data-close-label={closeLabel}
     >
-      <span class="footer-bar__dots" aria-hidden="true">●●●</span>
-      <span data-footer-label>{openLabel}</span>
+      <span class="footer-bar__dots" aria-hidden="true">⋯</span>
+      <span class="sr-only" data-footer-label>{openLabel}</span>
     </button>
-    <small>© {new Date().getFullYear()}</small>
+    <small>©Yves</small>
   </div>
 </footer>
 
@@ -73,23 +150,52 @@ const { locale, openLabel, closeLabel, title, sections, links, telLabel, timeLab
   const footerBar = document.querySelector('[data-footer-bar]');
   const toggle = document.querySelector('[data-footer-toggle]');
   const label = document.querySelector('[data-footer-label]');
-  const sentinel = document.querySelector('[data-footer-sentinel]');
+  const anchorLinks = overlay?.querySelectorAll('a[href^="#"]');
 
   let footerOpen = false;
   let manualClosedAtBottom = false;
   let wasAtBottom: boolean | null = null;
+  let footerScrollFrame = 0;
+  let closeOnScrollIntent = false;
 
-  const setFooter = (open: boolean, source: 'manual' | 'scroll' = 'manual') => {
-    if (!(overlay instanceof HTMLElement) || !(toggle instanceof HTMLElement) || !(label instanceof HTMLElement)) return;
+  const getDistanceFromBottom = () =>
+    Math.max(
+      0,
+      document.documentElement.scrollHeight -
+        (window.scrollY + window.innerHeight),
+    );
+
+  const setFooter = (
+    open: boolean,
+    source: 'manual' | 'scroll' = 'manual',
+  ) => {
+    if (
+      !(overlay instanceof HTMLElement) ||
+      !(toggle instanceof HTMLElement) ||
+      !(label instanceof HTMLElement)
+    ) {
+      return;
+    }
 
     footerOpen = open;
+    closeOnScrollIntent =
+      open && source === 'manual' && getDistanceFromBottom() > 16;
     overlay.dataset.open = String(open);
     overlay.setAttribute('aria-hidden', String(!open));
     footerBar?.classList.toggle('is-open', open);
+    document.documentElement.classList.toggle('footer-is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    label.textContent = open ? toggle.dataset.closeLabel ?? '' : toggle.dataset.openLabel ?? '';
+    label.textContent = open
+      ? toggle.dataset.closeLabel ?? ''
+      : toggle.dataset.openLabel ?? '';
 
-    if (!open && source === 'manual') manualClosedAtBottom = true;
+    if (
+      !open &&
+      source === 'manual' &&
+      getDistanceFromBottom() <= 16
+    ) {
+      manualClosedAtBottom = true;
+    }
   };
 
   toggle?.addEventListener('click', () => setFooter(!footerOpen));
@@ -98,33 +204,78 @@ const { locale, openLabel, closeLabel, title, sections, links, telLabel, timeLab
     if (event.target === overlay) setFooter(false);
   });
 
+  anchorLinks?.forEach((link) =>
+    link.addEventListener('click', () => setFooter(false)),
+  );
+
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && footerOpen) setFooter(false);
+    if (event.key === 'Escape' && footerOpen) {
+      setFooter(false);
+      return;
+    }
+
+    if (
+      footerOpen &&
+      closeOnScrollIntent &&
+      ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(
+        event.key,
+      )
+    ) {
+      event.preventDefault();
+      setFooter(false, 'scroll');
+    }
   });
 
-  if (sentinel && 'IntersectionObserver' in window) {
-    const footerObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        const isAtBottom = entry.isIntersecting;
+  const closeFooterBeforePageScroll = (event: Event) => {
+    if (!footerOpen || !closeOnScrollIntent) return;
+    event.preventDefault();
+    setFooter(false, 'scroll');
+  };
 
-        if (wasAtBottom === null) {
-          wasAtBottom = isAtBottom;
-          if (isAtBottom) setFooter(true, 'scroll');
-          return;
-        }
+  window.addEventListener('wheel', closeFooterBeforePageScroll, {
+    passive: false,
+    capture: true,
+  });
+  window.addEventListener('touchmove', closeFooterBeforePageScroll, {
+    passive: false,
+    capture: true,
+  });
 
-        if (isAtBottom && !wasAtBottom && !manualClosedAtBottom) setFooter(true, 'scroll');
-        if (!isAtBottom && wasAtBottom) {
-          manualClosedAtBottom = false;
-          if (footerOpen) setFooter(false, 'scroll');
-        }
+  const syncFooterWithScroll = () => {
+    footerScrollFrame = 0;
+    const distanceFromBottom = getDistanceFromBottom();
+    const isAtBottom = distanceFromBottom <= 16;
 
-        wasAtBottom = isAtBottom;
-      },
-      { threshold: 0.75 },
-    );
+    if (wasAtBottom === null) {
+      wasAtBottom = isAtBottom;
+      if (isAtBottom) setFooter(true, 'scroll');
+      return;
+    }
 
-    footerObserver.observe(sentinel);
-  }
+    if (footerOpen && closeOnScrollIntent && !isAtBottom) {
+      setFooter(false, 'scroll');
+      wasAtBottom = false;
+      return;
+    }
+
+    if (isAtBottom && !wasAtBottom && !manualClosedAtBottom) {
+      setFooter(true, 'scroll');
+    }
+
+    if (!isAtBottom && wasAtBottom && footerOpen) {
+      setFooter(false, 'scroll');
+    }
+
+    if (distanceFromBottom > 160) manualClosedAtBottom = false;
+    wasAtBottom = isAtBottom;
+  };
+
+  const scheduleFooterSync = () => {
+    if (footerScrollFrame) return;
+    footerScrollFrame = window.requestAnimationFrame(syncFooterWithScroll);
+  };
+
+  window.addEventListener('scroll', scheduleFooterSync, { passive: true });
+  window.addEventListener('resize', scheduleFooterSync);
+  scheduleFooterSync();
 </script>

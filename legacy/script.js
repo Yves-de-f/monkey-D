@@ -1,14 +1,12 @@
 // 選單開關
 document.addEventListener('DOMContentLoaded', () => {
-
   const toggleSwitches = document.querySelectorAll('.menu-toggle');
   const navMenu = document.getElementById('navbar-menu');
   const navbar = document.getElementById('navbar');
 
   if (toggleSwitches.length > 0 && navMenu && navbar) {
-    toggleSwitches.forEach(switchBtn => {
+    toggleSwitches.forEach((switchBtn) => {
       switchBtn.addEventListener('click', () => {
-        
         navMenu.classList.toggle('on');
 
         if (navMenu.classList.contains('on')) {
@@ -22,27 +20,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let lastScrollTop = 0;
   if (navbar) {
-    window.addEventListener("scroll", () => {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    window.addEventListener('scroll', () => {
+      const currentScrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
 
       if (currentScrollTop > lastScrollTop && currentScrollTop > 0) {
         // 向下滾動
-        navbar.classList.add("transparent");
+        navbar.classList.add('transparent');
       } else {
         // 向上滾動
-        navbar.classList.remove("transparent");
+        navbar.classList.remove('transparent');
       }
       lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
     });
   }
-
 });
 
 // image offset
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
   const scrolled = window.scrollY;
   const image = document.querySelector('.hero-img img');
-  
+
   const moveRate = 0.1;
   image.style.transform = `translateY(-${scrolled * moveRate}px)`;
 });
@@ -93,41 +91,43 @@ window.addEventListener('scroll', () => {
 });
 
 // mailer
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
-        const statusMessage = document.getElementById('statusMessage');
+document
+  .getElementById('contactForm')
+  .addEventListener('submit', function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const statusMessage = document.getElementById('statusMessage');
 
-        statusMessage.style.display = 'none';
+    statusMessage.style.display = 'none';
 
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                statusMessage.textContent = '郵件已成功發送！';
-                statusMessage.className = 'message-box message-success';
-                form.reset();
-            } else {
-                statusMessage.textContent = '郵件發送失敗：' + (data.message || '請稍後再試。');
-                statusMessage.className = 'message-box message-error';
-            }
-            statusMessage.style.display = 'block';
-        })
-        .catch(error => {
-            console.error('發送錯誤:', error);
-            statusMessage.textContent = '發生網路錯誤，請檢查您的連線。';
-            statusMessage.className = 'message-box message-error';
-            statusMessage.style.display = 'block';
-        });
-    });
-
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          statusMessage.textContent = '郵件已成功發送！';
+          statusMessage.className = 'message-box message-success';
+          form.reset();
+        } else {
+          statusMessage.textContent =
+            '郵件發送失敗：' + (data.message || '請稍後再試。');
+          statusMessage.className = 'message-box message-error';
+        }
+        statusMessage.style.display = 'block';
+      })
+      .catch((error) => {
+        console.error('發送錯誤:', error);
+        statusMessage.textContent = '發生網路錯誤，請檢查您的連線。';
+        statusMessage.className = 'message-box message-error';
+        statusMessage.style.display = 'block';
+      });
+  });
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
       observer.unobserve(entry.target); // 只觸發一次
@@ -135,6 +135,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-document.querySelectorAll('.slide-up-text', '.slide-up-block').forEach(el => {
+document.querySelectorAll('.slide-up-text', '.slide-up-block').forEach((el) => {
   observer.observe(el);
 });

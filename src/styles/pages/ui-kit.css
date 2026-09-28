@@ -58,12 +58,26 @@
     font-size: var(--text-md);
   }
 
-  .swatch--paper { background: var(--color-paper); }
-  .swatch--raised { background: var(--color-paper-raised); }
-  .swatch--ink { background: var(--color-ink); color: var(--color-paper-raised); }
-  .swatch--orange { background: var(--color-orange); }
-  .swatch--signal { background: var(--color-signal); }
-  .swatch--footer { background: var(--color-footer); color: var(--color-footer-text); }
+  .swatch--paper {
+    background: var(--color-paper);
+  }
+  .swatch--raised {
+    background: var(--color-paper-raised);
+  }
+  .swatch--ink {
+    background: var(--color-ink);
+    color: var(--color-paper-raised);
+  }
+  .swatch--orange {
+    background: var(--color-orange);
+  }
+  .swatch--signal {
+    background: var(--color-signal);
+  }
+  .swatch--footer {
+    background: var(--color-footer);
+    color: var(--color-footer-text);
+  }
 
   .type-specimens {
     display: grid;

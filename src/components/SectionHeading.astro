@@ -2,15 +2,19 @@
 interface Props {
   id?: string;
   eyebrow: string;
+  category?: string;
   title: string;
   deck?: string;
 }
 
-const { id, eyebrow, title, deck } = Astro.props;
+const { id, eyebrow, category, title, deck } = Astro.props;
 ---
 
 <header class="section-heading shell grid-12" data-reveal>
   <p class="section-heading__eyebrow eyebrow">{eyebrow}</p>
-  <h2 class="section-heading__title" id={id}>{title}</h2>
+  <div class="section-heading__main">
+    {category && <p class="section-category">{category}</p>}
+    <h2 class="section-heading__title" id={id}>{title}</h2>
+  </div>
   {deck && <p class="section-heading__deck">{deck}</p>}
 </header>

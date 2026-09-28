@@ -20,51 +20,107 @@
 } */
 
 /* PC/Desktop */
-h1 { font-size: 48px; }
-h2 { font-size: 36px; }
-h3 { font-size: 28px; }
-h4 { font-size: 24px; }
-h5 { font-size: 20px; }
-h6 { font-size: 16px; }
-p { font-size: 20px; }
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 36px;
+}
+h3 {
+  font-size: 28px;
+}
+h4 {
+  font-size: 24px;
+}
+h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 16px;
+}
+p {
+  font-size: 20px;
+}
 /* 平板 */
 @media (max-width: 1200px) {
-  h1 { font-size: 40px; }
-  h2 { font-size: 32px; }
-  h3 { font-size: 26px; }
-  h4 { font-size: 22px; }
-  h5 { font-size: 18px; }
-  h6 { font-size: 16px; }
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  h3 {
+    font-size: 26px;
+  }
+  h4 {
+    font-size: 22px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  h6 {
+    font-size: 16px;
+  }
 }
 /* 手機 */
 @media (max-width: 768px) {
-  h1 { font-size: 32px; }
-  h2 { font-size: 28px; }
-  h3 { font-size: 24px; }
-  h4 { font-size: 20px; }
-  h5 { font-size: 16px; }
-  h6 { font-size: 14px; }
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 28px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 16px;
+  }
+  h6 {
+    font-size: 14px;
+  }
 }
 @font-face {
-  font-family: "CustomFont";
-  src: url("fonts/CustomFont.ttf") format("woff2");
+  font-family: 'CustomFont';
+  src: url('fonts/CustomFont.ttf') format('woff2');
   /* , */
-        /* url("fonts/my-custom-font.woff") format("woff"); */
+  /* url("fonts/my-custom-font.woff") format("woff"); */
   font-weight: normal;
   font-style: normal;
 }
-----------------------------
-* {
+---------------------------- * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body, h1, h2, h3, h4, h5, h6,
-p, a, blockquote, pre,
-dl, dd, ol, ul, figure,
-form, fieldset, legend,
-input, textarea, select, button,
-label, summary {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select,
+button,
+label,
+summary {
   margin: 0;
   padding: 0;
   color: inherit;
@@ -73,7 +129,7 @@ label, summary {
   box-sizing: border-box;
 }
 body {
-  font-family: "CustomFont", system-ui, sans-serif;
+  font-family: 'CustomFont', system-ui, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1;
@@ -139,7 +195,7 @@ li {
   background: var(--fun2-color);
   border-radius: 999px;
   border: 1px solid var(--text-color);
-  padding: .2rem .3rem;
+  padding: 0.2rem 0.3rem;
   line-height: 1;
 }
 .navbar-text > a::before {
@@ -162,12 +218,12 @@ li {
 }
 
 /* main */
-.page{
+.page {
   max-width: 1300px;
   margin: 3rem auto;
   background: var(--bg-color);
 }
-.container {      
+.container {
   padding: 60px 80px;
 }
 
@@ -182,7 +238,7 @@ li {
   align-items: center;
   padding: 30px 10px;
 }
-.hero h3 {  
+.hero h3 {
   line-height: 1.5;
   font-size: 40px;
   width: 80%;
@@ -190,7 +246,7 @@ li {
 }
 .hero p {
   color: var(--muted-text);
-  line-height: 2.0;
+  line-height: 2;
 }
 
 /* 為什麼選擇我們 */
@@ -213,7 +269,7 @@ li {
   margin-bottom: 1rem;
 }
 .why p {
-  line-height: 2.0;
+  line-height: 2;
 }
 .why img {
   width: 300px;
@@ -226,7 +282,7 @@ li {
 .faq-container {
   margin-bottom: 6rem;
 }
-.badge{
+.badge {
   letter-spacing: 2px;
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--text-color);
@@ -254,7 +310,7 @@ li.slide {
   overflow: hidden;
   position: relative;
   aspect-ratio: 1 / 1;
-  
+
   &:nth-child(1) {
     padding: 0;
     padding-bottom: 1.5rem;
@@ -281,10 +337,9 @@ li.slide > span {
   z-index: 2;
   left: 0;
   bottom: 0;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 8px;
   backdrop-filter: blur(8px);
-
 }
 
 /* footer */
@@ -307,7 +362,7 @@ li.slide > span {
 
 @media (max-width: 1200px) {
   /* Hero */
-  .hero h3 {  
+  .hero h3 {
     width: 100%;
     margin-bottom: 2rem;
   }
@@ -328,22 +383,24 @@ li.slide > span {
     margin-bottom: 2rem;
   }
   .why p {
-    line-height: 2.0;
+    line-height: 2;
   }
 }
 
 @media (max-width: 780px) {
-  p { font-size: 16px; }
+  p {
+    font-size: 16px;
+  }
   /* main */
-  .page{
+  .page {
     margin: 2rem auto;
   }
-  .container {      
+  .container {
     padding: 1rem;
   }
 
   /* Hero */
-  .hero h3 {  
+  .hero h3 {
     font-size: 30px;
     width: 100%;
     margin-bottom: 2rem;
@@ -375,7 +432,7 @@ li.slide > span {
     text-align: center;
   }
   .why p {
-    line-height: 2.0;
+    line-height: 2;
     /* text-align: center; */
   }
 }
